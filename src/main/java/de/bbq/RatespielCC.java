@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  * @Autor Dr. Tikko
- * 
+ * @Bearbeitet: Christos Poulios
 
  *        Ein Spiel, in dem das Programm eine Zahl ausgibt und der Spieler versuch sie zu erraten.
  *        
@@ -32,7 +32,7 @@ public class RatespielCC {
 	Scanner scan = new Scanner(System.in);
 	private int obergrenze = -1;
 	private int untergrenze = -1;
-	int counter = 1;
+	int counter = 0;
 
 	/**
 	 * Standardkonstruktor
@@ -64,7 +64,7 @@ public class RatespielCC {
 
 		if (zahl == meineZahl) {
 			ausgabe(RICHTIG);
-			ausgabe("Du hast " + (counter - 1) + " Versuche gebraucht.");
+			ausgabe("Du hast " + counter + " Versuche gebraucht.");
 			wiederholeDasSpiel();
 		} else {
 			ausgabe(FALSCH);
@@ -125,7 +125,7 @@ public class RatespielCC {
 	/**
 	 * Generiert eine Zufalszahl aus
 	 * 
-	 * @return
+	 * @return Zufallszahl zwischen Untergrenze und Obergrenze (inklusive)
 	 */
 	private int ausdenke() {
 		return zufall.nextInt(untergrenze, obergrenze + 1);
@@ -150,7 +150,7 @@ public class RatespielCC {
 		String eingabe = textEinlesen();
 		int zahl;
 		try {
-			zahl = Integer.valueOf(eingabe);
+			zahl = Integer.parseInt(eingabe);
 		} catch (NumberFormatException e) {
 			zahl = eingabe.charAt(0);
 			ausgabe(KEINE_ZAHL + zahl);
@@ -170,7 +170,7 @@ public class RatespielCC {
 	/**
 	 * Hier startet das Programm.
 	 * 
-	 * @param args
+	 * @param args Kommandozeilenargumente (werden nicht verwendet)
 	 */
 	public static void main(String[] args) {
 
