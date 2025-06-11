@@ -22,6 +22,8 @@ public class RatespielCC {
 	private static final String TSCHUESS = "Tschüss! Bis zum nächsten Mal :-)";
 	private static final String JA = "1";
 	private static final String KEINE_ZAHL = "Das war keine Zahl. Interpretiere als ";
+	private static final String VERSUCHE_PREFIX = "Du hast ";
+	private static final String VERSUCHE_SUFFIX = " Versuche gebraucht.";
 	private static final String WILLKOMMEN = "Willkommen zum Ratespiel!\n";
 	private static final String FRAGE_UNTERGRENZE = "Bitte gebe deine Untergrenze ein: ";
 	private static final String FRAGE_OBERGRENZE = "Bitte geben deine Obergrenze ein: ";
@@ -50,7 +52,7 @@ public class RatespielCC {
 		setzeGrenzen();
 		meineZahl = ausdenke();
 		System.out.println(meineZahl);
-		ausgabe(erstelleStartNachricht());
+		ausgabe(SPIEL_GESTARTET_PREFIX + untergrenze + " und " + obergrenze + SPIEL_GESTARTET_SUFFIX);
 		spieleEineRunde();
 	}
 
@@ -64,7 +66,7 @@ public class RatespielCC {
 
 		if (zahl == meineZahl) {
 			ausgabe(RICHTIG);
-			ausgabe("Du hast " + counter + " Versuche gebraucht.");
+			ausgabe(VERSUCHE_PREFIX + counter + VERSUCHE_SUFFIX);
 			wiederholeDasSpiel();
 		} else {
 			ausgabe(FALSCH);
@@ -112,14 +114,6 @@ public class RatespielCC {
 			ausgabe(FALSCHE_OBERGRENZE);
 			setzeGrenzen();
         }
-	}
-
-	/**
-	 * Gibt den Text "Ich habe eine Zahl zwischen Untergrenze und Obergrenze
-	 * ausgedacht. Rate sie!" aus.
-	 */
-	private String erstelleStartNachricht() {
-		return SPIEL_GESTARTET_PREFIX + untergrenze + " und " + obergrenze + SPIEL_GESTARTET_SUFFIX;
 	}
 
 	/**
